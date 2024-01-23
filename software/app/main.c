@@ -6,6 +6,37 @@
 #include "sys/alt_sys_init.h"
 #include "unistd.h" //access to usleep
 #include "opencores_i2c.h"
+#include "opencores_i2c_regs.h"
+
+// #define I2C_DEBUG
+
+
+// Register address
+#define X0 0x32
+#define X1 0x33
+#define Y0 0x34
+#define Y1 0x35
+#define Z0 0x36
+#define Z1 0x37
+
+#define Xoff 0x1E
+#define Yoff 0x1F
+#define Zoff 0x20
+
+
+__int8_t LSBX = 0x00;
+__int8_t MSBX = 0x00;
+__int8_t LSBY = 0x00;
+__int8_t MSBY = 0x00;
+__int8_t LSBZ = 0x00;
+__int8_t MSBZ = 0x00;
+
+__int16_t dataX = 0x0000;
+__int16_t dataY = 0x0000;
+__int16_t dataZ = 0x0000;
+
+
+
 
 /*
 static void handle_interrupts(void* context, alt_u32 id)
@@ -13,89 +44,89 @@ static void handle_interrupts(void* context, alt_u32 id)
 	
 }
 */
+volatile __uint32_t speed;
 
+
+alt_u8 read_data(alt_u8 address) {
+        I2C_start(OPENCORES_I2C_0_BASE, 0x1D, 0);
+        I2C_write(OPENCORES_I2C_0_BASE,address,0);
+        I2C_start(OPENCORES_I2C_0_BASE, 0x1D, 0);
+        return I2C_read(OPENCORES_I2C_0_BASE, 1);
+        
+}
+
+void write_data(alt_u8 address, __int8_t wr_data){
+
+        I2C_start(OPENCORES_I2C_0_BASE, 0x1D, 0);
+        I2C_write(OPENCORES_I2C_0_BASE, address, 0);
+        I2C_write(OPENCORES_I2C_0_BASE, wr_data, 1);
+}
+
+
+/*
+void BCD(alt_u16 data)
+{   
+        __uint16_t u4;
+        __uint16_t u3;
+        __uint16_t u2;
+        __uint16_t u1;
+        __uint16_t u0;
+
+        u4 = data / 10000;
+        u3 = (data % 10000) / 1000;
+	u2 = (data % 1000) / 100;
+	u1 = (data % 1000) / 10;
+        u0 = data % 10;
+				
+        IOWR_ALTERA_AVALON_PIO_DATA(PIO_1_BASE,u0);
+	IOWR_ALTERA_AVALON_PIO_DATA(PIO_2_BASE,u1);
+	IOWR_ALTERA_AVALON_PIO_DATA(PIO_3_BASE,u2);
+        IOWR_ALTERA_AVALON_PIO_DATA(PIO_4_BASE,u3);
+        IOWR_ALTERA_AVALON_PIO_DATA(PIO_5_BASE,u4);
+			
+}
+*/
 int main(){
+
+	// Initialisation du bus I2C
+        speed = 100000;
+        I2C_init(OPENCORES_I2C_0_BASE,ALT_CPU_FREQ,speed);
+
+        while(1){
+                
+                // Read data for activate write
+                LSBX = read_data(X0);
+                MSBX = read_data (X1);
+
+                if (dataX & 0x8000) dataX = -(0xFFFF - dataX + 1);
+                dataX = MSBX << 8 | LSBX;
+
+	        dataX=dataX*3.9;
+
+                
+                alt_printf("Data read: 0x%x\n", dataX);
+        }
+        
+
+
+        //Calibration
+
+        // X axis
+        
+
+        // Y axis
+        //I2C_start(OPENCORES_I2C_0_BASE, 0x1D, 0);
+        //I2C_write(OPENCORES_I2C_0_BASE, 0x1E, 0);
+        //I2C_write(OPENCORES_I2C_0_BASE, 0, 1);
+
+        // Z axis
+        //I2C_start(OPENCORES_I2C_0_BASE, 0x1D, 0);
+        //I2C_write(OPENCORES_I2C_0_BASE, 0x1E, 0);
+        //I2C_write(OPENCORES_I2C_0_BASE, 0, 1);
 	
-	alt_printf("Hello, World!\n");
 
-	//alt_irq_register( PIO_1_IRQ, NULL, handle_interrupts );
-
-	int data;
-    int i;
-    // testing the PCA9554A paralle interface
-    // this writes a 5 to the leds and read the position of the dip switches.
-    alt_printf(" tesing the PCA9554A interface the\n the LEDS should be at a 5 \n");  
-    // address 0x38 
-    // set the fequesncy that you want to run at 
-    // most devices work at 100Khz  some faster
-    I2C_init(I2CA_BASE,ALT_CPU_FREQ,100000);
-    I2C_init(I2CA_BASE,ALT_CPU_FREQ,100000);
-    // for the parallel io only the first 4 are output s
     
-    // the PCA9554A   uses a command word right after the chip address word ( the start work)
-    I2C_start(I2CA_BASE,0x38,0);// chip address in write mode
-    I2C_write(I2CA_BASE,3,0);  // write to register 3 command
-    I2C_write(I2CA_BASE,0xf0,1);  // set the bottom 4 bits to outputs for the LEDs set the stop
     
-    // now right to the leds
-    I2C_start(I2CA_BASE,0x38,0); // address the chip in write mode
-    I2C_write(I2CA_BASE,1,0);  // set command to the pca9554 to be output register
-    I2C_write(I2CA_BASE,5,1);  // write the data to the output register and set the stop
-
-    //now read the dip switches
-    // first set the command to 0
-    I2C_start(I2CA_BASE,0x38,0); //address the chip in write mode
-    data =  I2C_write(I2CA_BASE,0,0);  // set command to read input register.
-    I2C_start(I2CA_BASE,0x38,1); //send start again but this time in read mode
-    data =  I2C_read(I2CA_BASE,1);  // read the input register and send stop
-    data = 0xff & (data >>4);   
-    printf("dip switch 0x%x\n",data);
-
-    printf("\nNow writing and reading from the EEPROM\n");
-    //address 0x50-57
-    I2C_start(I2CA_BASE,0x50,0); // chip address in write mode
-    I2C_write(I2CA_BASE,0,0);  // write to starting address of 0
-    // now write the data 
-    for (i=0;i<7;i++)           // can only write 8 bites at a time
-    {   
-    I2C_write(I2CA_BASE,i,0);  // writ the data 
-    }
-    I2C_write(I2CA_BASE,i,1);  // write last one with last flag
-    
-    while ( I2C_start(I2CA_BASE,0x50,0)); // make sure the write is done be fore continuing.
-    // can ony burst 8 at a time.
-
-    I2C_write(I2CA_BASE,8,0);  // write to starting address of 8
-    // now write the data 
-    for (i=0;i<7;i++)   // write the next 8 bytes
-    {
-    I2C_write(I2CA_BASE,i+8,0);  // 
-    }
-    I2C_write(I2CA_BASE,i+8,1);  // write last one with last flag
-    
-    while ( I2C_start(I2CA_BASE,0x50,0)); // make sure the write is done be fore continuing.
-    
-    //now read the values
-    // first set the command to 0
-    I2C_start(I2CA_BASE,0x50,0); //set chip address and set to write/
-    I2C_write(I2CA_BASE,0,0);  // set address to 0.
-    I2C_start(I2CA_BASE,0x50,1); //set chip address in read mode
-    for (i=0;i<15;i++)
-    {
-    data =  I2C_read(I2CA_BASE,0);  // memory array
-    printf("\tdata = 0x%x\n",data);
-    }
-
-    data =  I2C_read(I2CA_BASE,1);  // last memory read
-    printf("\tdata = 0x%x\n",data);
-
-
-
-
-
-
-
-    printf("Hello from Nios II!\n");
 	
 	return 0;
 }

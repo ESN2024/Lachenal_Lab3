@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>17 janv. 2024 11:41:48</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1705488108270</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>23 janv. 2024 22:53:30</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1706046810780</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>.\</BspGeneratedLocation>
         <BspSettingsFile>software\bsp\settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\lab3_qs.sopcinfo</SopcDesignFile>
@@ -14,7 +14,7 @@
                 <SettingName>hal.sys_clk_timer</SettingName>
                 <Identifier>ALT_SYS_CLK</Identifier>
                 <Type>UnquotedString</Type>
-                <Value>none</Value>
+                <Value>timer_0</Value>
                 <DefaultValue>none</DefaultValue>
                 <DestinationFile>system_h_define</DestinationFile>
                 <Description>Slave descriptor of the system clock timer device. This device provides a periodic interrupt ("tick") and is typically required for RTOS use. This setting defines the value of ALT_SYS_CLK in system.h.</Description>
@@ -905,14 +905,62 @@
                 <attributes>memory</attributes>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>opencores_i2c_0</slaveDescriptor>
+                <slaveDescriptor>timer_0</slaveDescriptor>
                 <addressRange>0x00021000 - 0x0002101F</addressRange>
+                <addressSpan>32</addressSpan>
+                <attributes>timer</attributes>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>opencores_i2c_0</slaveDescriptor>
+                <addressRange>0x00021020 - 0x0002103F</addressRange>
                 <addressSpan>32</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
+                <slaveDescriptor>pio_6</slaveDescriptor>
+                <addressRange>0x00021040 - 0x0002104F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>pio_5</slaveDescriptor>
+                <addressRange>0x00021050 - 0x0002105F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>pio_4</slaveDescriptor>
+                <addressRange>0x00021060 - 0x0002106F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>pio_3</slaveDescriptor>
+                <addressRange>0x00021070 - 0x0002107F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>pio_2</slaveDescriptor>
+                <addressRange>0x00021080 - 0x0002108F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>pio_1</slaveDescriptor>
+                <addressRange>0x00021090 - 0x0002109F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>pio_0</slaveDescriptor>
+                <addressRange>0x000210A0 - 0x000210AF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
                 <slaveDescriptor>jtag_uart_0</slaveDescriptor>
-                <addressRange>0x00021020 - 0x00021027</addressRange>
+                <addressRange>0x000210B0 - 0x000210B7</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes>printable</attributes>
         </MemoryMap>
