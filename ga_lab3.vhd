@@ -13,7 +13,8 @@ entity ga_lab3 is
 		seg2          : out std_logic_vector(6 downto 0);        
 		seg3          : out std_logic_vector(6 downto 0);       
 		seg4          : out std_logic_vector(6 downto 0);        
-		seg5          : out std_logic_vector(6 downto 0);  
+		seg5          : out std_logic_vector(6 downto 0);
+		cs            : out std_logic;
 		seg6          : out std_logic_vector(6 downto 0)   
 	);
 end entity ga_lab3;
@@ -52,6 +53,8 @@ architecture behav of ga_lab3 is
 	signal seg6wire : std_logic_vector(3 downto 0);
 	
 		begin
+		
+		cs <= '1';
 		
 	u0 : component lab3_qs
         port map (

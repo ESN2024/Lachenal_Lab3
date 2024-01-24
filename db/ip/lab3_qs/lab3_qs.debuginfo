@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="lab3_qs" kind="system" version="18.1" fabric="QSYS">
  <!-- Format version 18.1 625 (Future versions may contain additional information.) -->
- <!-- 2024.01.23.22:50:21 -->
+ <!-- 2024.01.24.11:50:21 -->
  <!-- A collection of modules and connections -->
  <parameter name="clockCrossingAdapter">
   <type>com.altera.sopcmodel.ensemble.EClockAdapter</type>
@@ -53,7 +53,7 @@
  </parameter>
  <parameter name="generationId">
   <type>int</type>
-  <value>1706046578</value>
+  <value>1706093382</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>true</visible>
@@ -4513,7 +4513,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.INIT_MEM_CONTENT</name>
-   <value>0</value>
+   <value>1</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.INSTANCE_ID</name>
@@ -4521,7 +4521,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.NON_DEFAULT_INIT_FILE_ENABLED</name>
-   <value>0</value>
+   <value>1</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.RAM_BLOCK_TYPE</name>
@@ -4641,7 +4641,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="initMemContent">
    <type>boolean</type>
-   <value>false</value>
+   <value>true</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -4649,9 +4649,9 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="initializationFileName">
    <type>java.lang.String</type>
-   <value>onchip_mem.hex</value>
+   <value>D:/Cours/ESN_github/Lachenal_Lab3/Lachenal_Lab3/software/app/mem_init/lab3_qs_onchip_memory2_0.hex</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -4659,7 +4659,7 @@ the requested settings for a module instance. -->
    <type>boolean</type>
    <value>false</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -4737,9 +4737,9 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="useNonDefaultInitFile">
    <type>boolean</type>
-   <value>false</value>
+   <value>true</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -4747,7 +4747,7 @@ the requested settings for a module instance. -->
    <type>boolean</type>
    <value>false</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>false</visible>
    <valid>true</valid>
   </parameter>
@@ -4860,7 +4860,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="derived_init_file_name">
    <type>java.lang.String</type>
-   <value>lab3_qs_onchip_memory2_0.hex</value>
+   <value>D:/Cours/ESN_github/Lachenal_Lab3/Lachenal_Lab3/software/app/mem_init/lab3_qs_onchip_memory2_0.hex</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -5990,7 +5990,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.EDGE_TYPE</name>
-   <value>ANY</value>
+   <value>FALLING</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.FREQ</name>
@@ -6034,15 +6034,15 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.altr,interrupt-type</name>
-   <value>3</value>
+   <value>2</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.altr,interrupt_type</name>
-   <value>3</value>
+   <value>2</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.edge_type</name>
-   <value>2</value>
+   <value>1</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.level_trigger</name>
@@ -6090,7 +6090,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="edgeType">
    <type>java.lang.String</type>
-   <value>ANY</value>
+   <value>FALLING</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -6196,7 +6196,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="derived_edge_type">
    <type>java.lang.String</type>
-   <value>ANY</value>
+   <value>FALLING</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -17066,7 +17066,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="IRQ_MAP">
    <type>java.lang.String</type>
-   <value>0:1,1:0,2:3,3:2</value>
+   <value>0:3,1:0,2:1,3:2</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -20724,5 +20724,5 @@ parameters are a RESULT of the module parameters. -->
   <version>18.1</version>
  </plugin>
  <reportVersion>18.1 625</reportVersion>
- <uniqueIdentifier>ACE2D36214B20000018D384D00F0</uniqueIdentifier>
+ <uniqueIdentifier>ACE2D36214B20000018D3B17268C</uniqueIdentifier>
 </EnsembleReport>

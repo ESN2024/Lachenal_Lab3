@@ -9,8 +9,8 @@
 			pio_3_external_connection_export    : out   std_logic_vector(3 downto 0);        -- export
 			pio_4_external_connection_export    : out   std_logic_vector(3 downto 0);        -- export
 			pio_5_external_connection_export    : out   std_logic_vector(3 downto 0);        -- export
-			reset_reset_n                       : in    std_logic                    := 'X'; -- reset_n
-			pio_6_external_connection_export    : out   std_logic_vector(3 downto 0)         -- export
+			pio_6_external_connection_export    : out   std_logic_vector(3 downto 0);        -- export
+			reset_reset_n                       : in    std_logic                    := 'X'  -- reset_n
 		);
 	end component lab3_qs;
 
@@ -25,7 +25,7 @@
 			pio_3_external_connection_export    => CONNECTED_TO_pio_3_external_connection_export,    -- pio_3_external_connection.export
 			pio_4_external_connection_export    => CONNECTED_TO_pio_4_external_connection_export,    -- pio_4_external_connection.export
 			pio_5_external_connection_export    => CONNECTED_TO_pio_5_external_connection_export,    -- pio_5_external_connection.export
-			reset_reset_n                       => CONNECTED_TO_reset_reset_n,                       --                     reset.reset_n
-			pio_6_external_connection_export    => CONNECTED_TO_pio_6_external_connection_export     -- pio_6_external_connection.export
+			pio_6_external_connection_export    => CONNECTED_TO_pio_6_external_connection_export,    -- pio_6_external_connection.export
+			reset_reset_n                       => CONNECTED_TO_reset_reset_n                        --                     reset.reset_n
 		);
 

@@ -27,7 +27,7 @@ BEGIN
 			WHEN "1100"=> Sortie<="1000110";
 			WHEN "1101"=> Sortie<="0100001";
 			WHEN "1110"=> Sortie<="0000110";
-			WHEN "1111"=> Sortie<="0001110";
+			WHEN "1111"=> Sortie<="0111111";
 			WHEN OTHERS=> Sortie<="0111111";
 			END CASE;
 	END PROCESS;

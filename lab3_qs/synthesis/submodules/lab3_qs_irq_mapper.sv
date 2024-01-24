@@ -22,7 +22,7 @@
 // Parameters
 //   NUM_RCVRS        : 4
 //   SENDER_IRW_WIDTH : 32
-//   IRQ_MAP          : 0:1,1:0,2:3,3:2
+//   IRQ_MAP          : 0:3,1:0,2:1,3:2
 //
 // -------------------------------------------------------
 
@@ -54,9 +54,9 @@ module lab3_qs_irq_mapper
     always @* begin
 	sender_irq = 0;
 
-        sender_irq[1] = receiver0_irq;
+        sender_irq[3] = receiver0_irq;
         sender_irq[0] = receiver1_irq;
-        sender_irq[3] = receiver2_irq;
+        sender_irq[1] = receiver2_irq;
         sender_irq[2] = receiver3_irq;
     end
 

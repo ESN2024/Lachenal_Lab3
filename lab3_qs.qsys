@@ -89,6 +89,22 @@
          type = "int";
       }
    }
+   element pio_0.clk
+   {
+      datum _tags
+      {
+         value = "";
+         type = "String";
+      }
+   }
+   element pio_0.external_connection
+   {
+      datum _tags
+      {
+         value = "";
+         type = "String";
+      }
+   }
    element pio_0.s1
    {
       datum baseAddress
@@ -485,7 +501,7 @@
    version="18.1"
    enabled="1">
   <parameter name="allowInSystemMemoryContentEditor" value="false" />
-  <parameter name="autoInitializationFileName">lab3_qs_onchip_memory2_0</parameter>
+  <parameter name="autoInitializationFileName">$${FILENAME}_onchip_memory2_0</parameter>
   <parameter name="blockType" value="AUTO" />
   <parameter name="copyInitFile" value="false" />
   <parameter name="dataWidth" value="32" />
@@ -496,8 +512,8 @@
   <parameter name="ecc_enabled" value="false" />
   <parameter name="enPRInitMode" value="false" />
   <parameter name="enableDiffWidth" value="false" />
-  <parameter name="initMemContent" value="false" />
-  <parameter name="initializationFileName" value="onchip_mem.hex" />
+  <parameter name="initMemContent" value="true" />
+  <parameter name="initializationFileName">D:/Cours/ESN_github/Lachenal_Lab3/Lachenal_Lab3/software/app/mem_init/lab3_qs_onchip_memory2_0.hex</parameter>
   <parameter name="instanceID" value="NONE" />
   <parameter name="memorySize" value="40000" />
   <parameter name="readDuringWriteMode" value="DONT_CARE" />
@@ -507,7 +523,7 @@
   <parameter name="singleClockOperation" value="false" />
   <parameter name="slave1Latency" value="1" />
   <parameter name="slave2Latency" value="1" />
-  <parameter name="useNonDefaultInitFile" value="false" />
+  <parameter name="useNonDefaultInitFile" value="true" />
   <parameter name="useShallowMemBlocks" value="false" />
   <parameter name="writable" value="true" />
  </module>
@@ -518,7 +534,7 @@
   <parameter name="captureEdge" value="true" />
   <parameter name="clockRate" value="50000000" />
   <parameter name="direction" value="Input" />
-  <parameter name="edgeType" value="ANY" />
+  <parameter name="edgeType" value="FALLING" />
   <parameter name="generateIRQ" value="true" />
   <parameter name="irqType" value="EDGE" />
   <parameter name="resetValue" value="0" />
@@ -773,7 +789,7 @@
    version="18.1"
    start="nios2_gen2_0.irq"
    end="opencores_i2c_0.interrupt_sender">
-  <parameter name="irqNumber" value="1" />
+  <parameter name="irqNumber" value="3" />
  </connection>
  <connection
    kind="interrupt"
@@ -787,7 +803,7 @@
    version="18.1"
    start="nios2_gen2_0.irq"
    end="pio_0.irq">
-  <parameter name="irqNumber" value="3" />
+  <parameter name="irqNumber" value="1" />
  </connection>
  <connection
    kind="interrupt"

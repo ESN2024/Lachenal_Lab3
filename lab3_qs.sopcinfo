@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="lab3_qs" kind="lab3_qs" version="1.0" fabric="QSYS">
  <!-- Format version 18.1 625 (Future versions may contain additional information.) -->
- <!-- 2024.01.23.22:49:38 -->
+ <!-- 2024.01.24.11:49:42 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1706046578</value>
+  <value>1706093382</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -3966,7 +3966,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>opencores_i2c_0</moduleName>
     <slaveName>interrupt_sender</slaveName>
     <name>opencores_i2c_0.interrupt_sender</name>
-    <interruptNumber>1</interruptNumber>
+    <interruptNumber>3</interruptNumber>
    </interrupt>
    <interrupt>
     <isBridge>false</isBridge>
@@ -3980,7 +3980,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>pio_0</moduleName>
     <slaveName>irq</slaveName>
     <name>pio_0.irq</name>
-    <interruptNumber>3</interruptNumber>
+    <interruptNumber>1</interruptNumber>
    </interrupt>
    <interrupt>
     <isBridge>false</isBridge>
@@ -4548,7 +4548,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.INIT_MEM_CONTENT</name>
-   <value>0</value>
+   <value>1</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.INSTANCE_ID</name>
@@ -4556,7 +4556,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.NON_DEFAULT_INIT_FILE_ENABLED</name>
-   <value>0</value>
+   <value>1</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.RAM_BLOCK_TYPE</name>
@@ -4676,7 +4676,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="initMemContent">
    <type>boolean</type>
-   <value>false</value>
+   <value>true</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -4684,9 +4684,9 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="initializationFileName">
    <type>java.lang.String</type>
-   <value>onchip_mem.hex</value>
+   <value>D:/Cours/ESN_github/Lachenal_Lab3/Lachenal_Lab3/software/app/mem_init/lab3_qs_onchip_memory2_0.hex</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -4694,7 +4694,7 @@ the requested settings for a module instance. -->
    <type>boolean</type>
    <value>false</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -4772,9 +4772,9 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="useNonDefaultInitFile">
    <type>boolean</type>
-   <value>false</value>
+   <value>true</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -4782,7 +4782,7 @@ the requested settings for a module instance. -->
    <type>boolean</type>
    <value>false</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>false</visible>
    <valid>true</valid>
   </parameter>
@@ -4895,7 +4895,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="derived_init_file_name">
    <type>java.lang.String</type>
-   <value>lab3_qs_onchip_memory2_0.hex</value>
+   <value>D:/Cours/ESN_github/Lachenal_Lab3/Lachenal_Lab3/software/app/mem_init/lab3_qs_onchip_memory2_0.hex</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -6025,7 +6025,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.EDGE_TYPE</name>
-   <value>ANY</value>
+   <value>FALLING</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.FREQ</name>
@@ -6069,15 +6069,15 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.altr,interrupt-type</name>
-   <value>3</value>
+   <value>2</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.altr,interrupt_type</name>
-   <value>3</value>
+   <value>2</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.edge_type</name>
-   <value>2</value>
+   <value>1</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.level_trigger</name>
@@ -6125,7 +6125,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="edgeType">
    <type>java.lang.String</type>
-   <value>ANY</value>
+   <value>FALLING</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -6231,7 +6231,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="derived_edge_type">
    <type>java.lang.String</type>
-   <value>ANY</value>
+   <value>FALLING</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -13339,7 +13339,7 @@ parameters are a RESULT of the module parameters. -->
    end="opencores_i2c_0.interrupt_sender">
   <parameter name="irqNumber">
    <type>int</type>
-   <value>1</value>
+   <value>3</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -13409,7 +13409,7 @@ parameters are a RESULT of the module parameters. -->
    end="pio_0.irq">
   <parameter name="irqNumber">
    <type>int</type>
-   <value>3</value>
+   <value>1</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
